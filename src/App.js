@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className="app">
       <div className="app_child">
-        <h1>Todo App</h1>
+        <h1>My Todo App</h1>
         <AddNewTodo setAllTodos={setAllTodos} allTodos={allTodos} />
         {allTodos.length > 0 ? (
           allTodos.map((item) => (
