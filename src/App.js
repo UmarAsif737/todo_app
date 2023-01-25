@@ -10,8 +10,10 @@ function App() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodos((prev) => [...prev, writeTodo]);
-    setWriteTodo("");
+    if (writeTodo !== "") {
+      setTodos((prev) => [...prev, writeTodo]);
+      setWriteTodo("");
+    }
   };
   const handleDelete = (singleTodo) => {
     console.log(singleTodo);

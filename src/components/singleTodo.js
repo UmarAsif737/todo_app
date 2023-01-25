@@ -3,9 +3,11 @@ import React from "react";
 const SingleTodo = ({ handleDelete, singleTodo }) => {
   return (
     <div>
-      <div className="displayTodo">
+      <div className="single_todo">
         <p>{singleTodo}</p>
-        <button onClick={() => handleDelete(singleTodo)}>X</button>
+        <button className="delete_button" onClick={() => handleClick(item)}>
+          ✘
+        </button>
       </div>
     </div>
   );

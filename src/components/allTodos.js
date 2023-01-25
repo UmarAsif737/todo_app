@@ -3,7 +3,7 @@ import React from "react";
 const AllTodos = ({ handleSubmit, handleChange, writeTodo }) => {
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add_new_todo">
         <input
           type="text"
           onChange={handleChange}
