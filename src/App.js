@@ -1,55 +1,29 @@
-import { useState } from "react";
-import AllTodos from "./components/allTodos";
+import React, { useState } from "react";
+import AddNewTodo from "./components/addNewTodo";
 import SingleTodo from "./components/singleTodo";
 
-function App() {
-  const [todos, setTodos] = useState([]);
-  const [writeTodo, setWriteTodo] = useState("");
-  const handleChange = (e) => {
-    setWriteTodo(e.target.value);
+const App = () => {
+  const [allTodos, setAllTodos] = useState([]);
+  console.log(allTodos);
+  const handleDeleteTodo = (item) => {
+    setAllTodos(allTodos.filter((x) => x !== item));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (writeTodo !== "") {
-      setTodos((prev) => [...prev, writeTodo]);
-      setWriteTodo("");
-    }
-  };
-  const handleDelete = (singleTodo) => {
-    console.log(singleTodo);
-    setTodos(todos.filter((todo) => todo !== singleTodo));
-  };
-  console.log(todos);
+
   return (
-    <div>
-      <AllTodos
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        writeTodo={writeTodo}
-      />
-      {/* <form onSubmit={handleSubmit}>11
-        <input
-          type="text"
-          onChange={handleChange}
-          value={writeTodo}
-          name="todo"
-          placeholder="Add a todo"
-        />
-        <button type="submit">Add</button>
-      </form> */}
-
-      {todos?.map((singleTodo) => (
-        <SingleTodo handleDelete={handleDelete} singleTodo={singleTodo} />
-      ))}
-
-      {/* {todos?.map((singleTodo) => (
-        <div className="displayTodo">
-          <p>{singleTodo}</p>
-          <button onClick={() => handleDelete(singleTodo)}>X</button>
-        </div>
-      ))} */}
+    <div className="app">
+      <div className="app_child">
+        <h1>Todo App</h1>
+        <AddNewTodo setAllTodos={setAllTodos} allTodos={allTodos} />
+        {allTodos.length > 0 ? (
+          allTodos.map((item) => (
+            <SingleTodo item={item} handleClick={handleDeleteTodo} />
+          ))
+        ) : (
+          <p className="text-muted">Please Add a Todo</p>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default App;

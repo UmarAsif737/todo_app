@@ -1,14 +1,12 @@
 import React from "react";
 
-const SingleTodo = ({ handleDelete, singleTodo }) => {
+const SingleTodo = ({ item, handleClick }) => {
   return (
-    <div>
-      <div className="single_todo">
-        <p>{singleTodo}</p>
-        <button className="delete_button" onClick={() => handleClick(item)}>
-          ✘
-        </button>
-      </div>
+    <div className="single_todo">
+      <div>{item}</div>
+      <button className="delete_button" onClick={() => handleClick(item)}>
+        ✘
+      </button>
     </div>
   );
 };
